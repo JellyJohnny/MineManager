@@ -12,12 +12,15 @@ public class FollowCam : MonoBehaviour
     private void Start()
     {
         offset = transform.position - target.position;
-        target = GameObject.Find("Player").transform;
+        //target = GameObject.Find("Player").transform;
     }
 
 
     private void FixedUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, target.position + offset, damping);
+        if (target != null)
+        {
+            transform.position = Vector3.Lerp(transform.position, target.position + offset, damping);
+        }
     }
 }

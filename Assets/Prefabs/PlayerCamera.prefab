@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4742634327082584497}
   - component: {fileID: 522022890663016023}
   - component: {fileID: 7658403770263029790}
+  - component: {fileID: 376055769074371200}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5387389394443159681}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.1471462, y: 0.78730744, z: 0.1375224}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -68,7 +69,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
@@ -106,4 +107,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damping: 0.1
-  target: {fileID: 0}
+  target: {fileID: 452200376641152476, guid: 55dd6ade5fce8814484416118b624a5c, type: 3}
+--- !u!114 &376055769074371200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5387389394443159681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b73ea54c58c0e2343a60fef50108babe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursor: {fileID: 3412849923351270702, guid: 927b6f6d2799c1548b5711f102404d5d, type: 3}
+  newScale: 0.8
+  scaleDuration: 0.25
+  playerCam: {fileID: 4742634327082584497}
