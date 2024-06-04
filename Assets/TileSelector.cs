@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class TileSelector : MonoBehaviour
 {
     public GameObject cursor;
+    public GameObject tileselector;
     Vector3 cursorPosition = Vector3.zero;
     public float newScale;
     public float scaleDuration;
+    public float cursorStickyness;
     public Camera playerCam;
 
     Vector3 worldPosition;
@@ -17,6 +20,7 @@ public class TileSelector : MonoBehaviour
     private void Start()
     {
         StartCoroutine(PulseCursor());
+        Cursor.visible = false;
     }
 
     private void Update()
@@ -27,15 +31,16 @@ public class TileSelector : MonoBehaviour
 
         if (playerCam != null)
         {
-            cursor.transform.position = new Vector3(Mathf.RoundToInt(worldPosition.x * 2) / 2, Mathf.RoundToInt(worldPosition.y * 2) / 2,worldPosition.z);
+            transform.position = worldPosition;
+            tileselector.transform.position = new Vector3(Mathf.RoundToInt(transform.position.x * 2) / 2, Mathf.RoundToInt(transform.position.y * 2) / 2,worldPosition.z);
         }
     }
 
     IEnumerator PulseCursor()
     {
-        cursor.transform.DOScale(newScale, scaleDuration).SetEase(Ease.Linear);
+        tileselector.transform.DOScale(newScale, scaleDuration).SetEase(Ease.Linear);
         yield return new WaitForSeconds(scaleDuration);
-        cursor.transform.DOScale(1f, scaleDuration).SetEase(Ease.Linear);
+        tileselector.transform.DOScale(1f, scaleDuration).SetEase(Ease.Linear);
         yield return new WaitForSeconds(scaleDuration);
         StartCoroutine(PulseCursor());
     }
